@@ -7,10 +7,20 @@ public class Item {
     private String name;
     private String description;
     private int id;
+    private int stackSize;
 
     public Item(Room room, int id, String name, String description) {
         this.room = room;
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.stackSize = 1;
+    }
+
+    public Item(Room room, int id, int stackSize, String name, String description) {
+        this.room = room;
+        this.id = id;
+        this.stackSize = stackSize;
         this.name = name;
         this.description = description;
     }
@@ -45,5 +55,13 @@ public class Item {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getStackSize() {
+        return stackSize;
+    }
+
+    public void setStackSize(int stackSize) {
+        this.stackSize = stackSize;
     }
 }
