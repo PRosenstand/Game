@@ -14,28 +14,42 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
       
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        DungeonEntrance = new Room("Dungeon Entrance the main entrance of the Dungeon");
+        NarrowPassage = new Room("A narrow passage leading from the entrance to multible larger caves");
+        Forest = new Room("The dark forest in which the dungeon is found");
+        DampCave = new Room("In a damp cave leading to a small river and what looks to be an abandoned camp");
+        AbandonedCamp = new Room("What looks to be an abandoned camp from whom and why there's no clue");
+        UndergroundRiver = new Room("An underground river leading from the damp cave to some sort of lake");
+        UndergroundLake = new Room("Some kind of underground lake");
+        WebbedCave = new Room("A webbed cave which looks abandoned for now, but there's a bit locked door ahead");
+        TreasureRoom = new Room("The treasure room of the dungeon there more riches here than im able to count");
 
-        theatre.setExit("west", outside);
+        DungeonEntrance.setExit("Forward", NarrowPassage);
+        DungeonEntrance.setExit("Back", Forest);
 
-        pub.setExit("east", outside);
+        NarrowPassage.setExit("Back", DungeonEntrance);
+        NarrowPassage.setExit("Left", DampCave);
+        NarrowPassage.setExit("Right", WebbedCave);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        Forest.setExit("Forward", DungeonEntrance);
 
-        office.setExit("west", lab);
+        DampCave.setExit("Back", NarrowPassage);
+        DampCave.setExit("Left", AbandonedCamp);
 
-        currentRoom = outside;
+        AbandonedCamp.setExit("Back", DampCave);
+
+        UndergroundRiver.setExit("Back", DampCave);
+        UndergroundRiver.setExit("Forward", UndergroundLake);
+
+        WebbedCave.setExit("Back", NarrowPassage);
+        WebbedCave.setExit("Forward", TreasureRoom);
+
+        TreasureRoom.setExit("Back", WebbedCave);
+
+
+        currentRoom = DungeonEntrance;
     }
 
     public void play() 
