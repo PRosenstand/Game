@@ -3,10 +3,10 @@ package Main.GameObjects;
 import Main.Room;
 
 public class Item {
-    Room room;
-    String name;
-    String description;
-    int id;
+    private Room room;
+    private String name;
+    private String description;
+    private int id;
 
     public Item(Room room, int id, String name, String description) {
         this.room = room;
