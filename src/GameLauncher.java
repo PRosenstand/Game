@@ -15,6 +15,7 @@ public class GameLauncher {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("Im running now okey...");
     }
     
 }
