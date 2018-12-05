@@ -8,7 +8,7 @@
  *
  * @author Rosenstand
  */
-public class HomeAlone {
+public class GameLauncher {
 
     /**
      * @param args the command line arguments
