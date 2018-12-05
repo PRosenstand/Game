@@ -1,4 +1,4 @@
-package Main.UserInterface;
+package Main;
 
 /**
  * This class is part of the "World of Zuul" application. 
