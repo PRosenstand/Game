@@ -62,7 +62,7 @@ public class Player {
      */
     public boolean addItem(Item item) {
         AtomicBoolean addedItem = new AtomicBoolean(false);
-        inventory.entrySet().stream().findFirst().filter(integerItemEntry -> integerItemEntry.getValue().getId() == 0).ifPresent(integerItemEntry -> {
+        inventory.entrySet().stream().filter(integerItemEntry -> integerItemEntry.getValue().getId() == 0).findFirst().ifPresent(integerItemEntry -> {
             inventory.put(integerItemEntry.getKey(), item);
             addedItem.set(true);
             System.out.println("Added item.");
