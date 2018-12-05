@@ -1,4 +1,3 @@
-package worldofzuul;
 
 public class Game 
 {

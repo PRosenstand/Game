@@ -1,6 +1,4 @@
-package worldofzuul;
 import java.util.HashMap;
-
 
 public class CommandWords
 {
@@ -8,7 +6,7 @@ public class CommandWords
 
     public CommandWords()
     {
-        validCommands = new HashMap<String, CommandWord>();
+        validCommands = new HashMap<>();
         for(CommandWord command : CommandWord.values()) {
             if(command != CommandWord.UNKNOWN) {
                 validCommands.put(command.toString(), command);

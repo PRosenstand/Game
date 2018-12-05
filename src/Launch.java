@@ -1,4 +1,3 @@
-
 import worldofzuul.Game;
 
 public class Launch {
