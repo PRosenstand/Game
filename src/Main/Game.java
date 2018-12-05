@@ -23,7 +23,7 @@ public class Game
         UndergroundRiver = new Room("An underground river leading from the damp cave to some sort of lake");
         UndergroundLake = new Room("Some kind of underground lake");
         WebbedCave = new Room("A webbed cave which looks abandoned for now, but there's a bit locked door ahead");
-        TreasureRoom = new Room("The treasure room of the dungeon there more riches here than im able to count");
+        TreasureRoom = new Room("The treasure room of the dungeon there more riches here than i'm able to count");
 
         DungeonEntrance.setExit("Forward", NarrowPassage);
         DungeonEntrance.setExit("Back", Forest);
