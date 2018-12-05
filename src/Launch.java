@@ -1,9 +1,10 @@
-package worldofzuul;
+
+import worldofzuul.Game;
 
 public class Launch {
 
     public static void main(String[] args) {
-        Game game = new Game;
+        worldofzuul.Game game = new Game();
         
         game.play();
     }
