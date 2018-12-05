@@ -1,4 +1,4 @@
-package UserInterface;
+package Main.UserInterface;
 
 public class Controller {
 }

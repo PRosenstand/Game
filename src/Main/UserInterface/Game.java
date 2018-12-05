@@ -1,21 +1,20 @@
+package Main.UserInterface;
 
-public class Game 
+public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
 
-    public Game() 
-    {
+
+    public Game() {
         createRooms();
         parser = new Parser();
     }
 
 
-    private void createRooms()
-    {
+    private void createRooms() {
         Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
-      
+
         DungeonEntrance = new Room("Dungeon Entrance the main entrance of the Dungeon");
         NarrowPassage = new Room("A narrow passage leading from the entrance to multible larger caves");
         Forest = new Room("The dark forest in which the dungeon is found");
@@ -52,11 +51,10 @@ public class Game
         currentRoom = DungeonEntrance;
     }
 
-    public void play() 
-    {            
+    public void play() {
         printWelcome();
 
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -65,8 +63,7 @@ public class Game
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to TempGameTitle!");
         System.out.println("You find yourself in the entrance to a dungeon like cave with a dark forest behind you");
@@ -75,8 +72,7 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) 
-    {
+    private boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
@@ -88,26 +84,22 @@ public class Game
 
         if (commandWord == CommandWord.HELP) {
             printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
+        } else if (commandWord == CommandWord.GO) {
             goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
+        } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
         return wantToQuit;
     }
 
-    private void printHelp() 
-    {
+    private void printHelp() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
     }
 
-    private void goRoom(Command command) 
-    {
+    private void goRoom(Command command) {
         if(!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
@@ -119,20 +111,17 @@ public class Game
 
         if (nextRoom == null) {
             System.out.println("There is no entrance!");
-        }
-        else {
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
     }
 
-    private boolean quit(Command command) 
-    {
+    private boolean quit(Command command) {
         if(command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

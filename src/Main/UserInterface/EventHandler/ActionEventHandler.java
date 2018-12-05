@@ -1,4 +1,4 @@
-package EventHandler;
+package Main.UserInterface.EventHandler;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
