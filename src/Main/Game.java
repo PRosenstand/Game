@@ -90,6 +90,8 @@ public class Game
             wantToQuit = quit(command);
         } else if (commandWord == commandWord.Explore){
             //printExploration(getCurrentRoom().getExplore());
+        } else if (commandWord == commandWord.Suicide){
+            
         }
         return wantToQuit;
     }
