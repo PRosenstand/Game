@@ -17,7 +17,7 @@ public class Parser
         String line = "";
         System.out.print("> ");
         if (reader.hasNextLine()) {
-            line = reader.nextLine();
+            line = reader.nextLine().toLowerCase();
         }
         String[] args = line.split(" ");
         return new Command(commands.getCommandWord(args[0]), Arrays.copyOfRange(args, 1, args.length));
