@@ -92,8 +92,8 @@ public class Game
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.EXPLORE) {
             //printExploration(getCurrentRoom().getExplore());
-        } else if (commandWord == commandWord.SUICIDE){
-            Main.UserInterface.Start.player.setDeath(true);
+        } else if (commandWord == CommandWord.SUICIDE) {
+            Start.player.setDeath(true);
         }
         return wantToQuit;
     }
