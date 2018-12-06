@@ -20,6 +20,10 @@ public class Start extends Application {
         Game game = new Game();
         game.play();
         player = new Player(game.DungeonEntrance);
+        //TODO: Add description
+        items.add(new Item(game.UndergroundLake, 1, "Key Piece 1", "Zy Also this one"));
+        items.add(new Item(game.AbandonedCamp, 2, "Key Piece 2", "Zy Also this one"));
+        items.add(new Item(game.Forest, 3, "Key Piece 3", "Zy Also this one"));
     }
 
     public void start(Stage primalStage) throws Exception {
