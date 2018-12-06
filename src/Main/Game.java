@@ -108,7 +108,7 @@ public class Game
             Start.player.setDeath(true);
         }
     }
-
+ 
     private void exploration(Room currentRoom) {
         List<Item> itemsInRoom = new ArrayList<>();
         Start.items.forEach(item -> {
