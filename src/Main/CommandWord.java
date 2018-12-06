@@ -6,8 +6,8 @@ public enum CommandWord
     QUIT("quit"),
     HELP("help"),
     UNKNOWN("?"),
-    Explore("explore"),
-    Suicide("give up");
+    EXPLORE("explore"),
+    SUICIDE("give_up");
 
     private String commandString;
 

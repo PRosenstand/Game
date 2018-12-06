@@ -88,9 +88,9 @@ public class Game
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.Explore) {
+        } else if (commandWord == CommandWord.EXPLORE) {
             //printExploration(getCurrentRoom().getExplore());
-        } else if (commandWord == commandWord.Suicide){
+        } else if (commandWord == commandWord.SUICIDE){
             
         }
         return wantToQuit;
