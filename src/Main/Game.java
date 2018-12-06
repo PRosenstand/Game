@@ -28,15 +28,15 @@ public class Game
     private void createRooms() {
 
 
-        DungeonEntrance = new Room("Dungeon Entrance the main entrance of the Dungeon");
-        NarrowPassage = new Room("A narrow passage leading from the entrance to multiple larger caves");
-        Forest = new Room("The dark forest in which the dungeon is found");
+        DungeonEntrance = new Room("in the Dungeon Entrance the main entrance of the Dungeon");
+        NarrowPassage = new Room("in a narrow passage leading from the entrance to multiple larger caves");
+        Forest = new Room("in the dark forest in which the dungeon is found");
         DampCave = new Room("In a damp cave leading to a small river and what looks to be an abandoned camp");
-        AbandonedCamp = new Room("What looks to be an abandoned camp from whom and why there's no clue");
-        UndergroundRiver = new Room("An underground river leading from the damp cave to some sort of lake");
-        UndergroundLake = new Room("Some kind of underground lake");
-        WebbedCave = new Room("A webbed cave which looks abandoned for now, but there's a bit locked door ahead");
-        TreasureRoom = new Room("The treasure room of the dungeon there more riches here than i'm able to count");
+        AbandonedCamp = new Room("in what looks to be an abandoned camp from whom and why there's no clue");
+        UndergroundRiver = new Room("besides an underground river leading from the damp cave to some sort of lake");
+        UndergroundLake = new Room("besides some kind of underground lake");
+        WebbedCave = new Room("in a webbed cave which looks abandoned for now, but there's a bit locked door ahead");
+        TreasureRoom = new Room("in the treasure room of the dungeon there more riches here than i'm able to count");
 
         DungeonEntrance.setExit("Forward", NarrowPassage);
         DungeonEntrance.setExit("Back", Forest);
