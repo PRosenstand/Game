@@ -89,7 +89,6 @@ public class Game
     }
 
     private boolean processCommand(Command command) {
-        boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
 
@@ -103,13 +102,13 @@ public class Game
         } else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
+            Start.player.setDeath(true); //totally not the exact same thing a Suicide just a bit less dark
         } else if (commandWord == CommandWord.EXPLORE) {
             exploration(currentRoom);
         } else if (commandWord == CommandWord.SUICIDE) {
             Start.player.setDeath(true);
         }
-        return wantToQuit;
+        return false;
     }
 
     private void exploration(Room currentRoom) {
@@ -157,12 +156,4 @@ public class Game
         }
     }
 
-    private boolean quit(Command command) {
-        if (command.hasArgs()) {
-            System.out.println("Quit what?");
-            return false;
-        } else {
-            return true;
-        }
-    }
 }
