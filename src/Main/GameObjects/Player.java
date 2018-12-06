@@ -9,7 +9,7 @@ public class Player {
     private Room room;
     private HashMap<Integer, Item> inventory = new HashMap<>();
     private int Health = 100;
-    private boolean death = false;
+    private boolean death = false; //shouldn't this be a public? and make it run a game over in Game if death=true?
 
     public Player(Room room) {
         for (int i = 0; i < 10; i++) {
