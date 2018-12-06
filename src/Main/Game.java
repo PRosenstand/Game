@@ -38,25 +38,25 @@ public class Game
         WebbedCave = new Room("in a webbed cave which looks abandoned for now, but there's a bit locked door ahead");
         TreasureRoom = new Room("in the treasure room of the dungeon there more riches here than i'm able to count");
 
-        DungeonEntrance.setExit("Forward", NarrowPassage);
-        DungeonEntrance.setExit("Back", Forest);
+        DungeonEntrance.setExit("forward", NarrowPassage);
+        DungeonEntrance.setExit("back", Forest);
 
-        NarrowPassage.setExit("Back", DungeonEntrance);
-        NarrowPassage.setExit("Left", DampCave);
-        NarrowPassage.setExit("Right", WebbedCave);
+        NarrowPassage.setExit("back", DungeonEntrance);
+        NarrowPassage.setExit("left", DampCave);
+        NarrowPassage.setExit("right", WebbedCave);
 
-        Forest.setExit("Forward", DungeonEntrance);
+        Forest.setExit("forward", DungeonEntrance);
 
-        DampCave.setExit("Back", NarrowPassage);
-        DampCave.setExit("Left", AbandonedCamp);
+        DampCave.setExit("back", NarrowPassage);
+        DampCave.setExit("left", AbandonedCamp);
 
-        AbandonedCamp.setExit("Back", DampCave);
+        AbandonedCamp.setExit("back", DampCave);
 
-        UndergroundRiver.setExit("Back", DampCave);
-        UndergroundRiver.setExit("Forward", UndergroundLake);
+        UndergroundRiver.setExit("back", DampCave);
+        UndergroundRiver.setExit("forward", UndergroundLake);
 
-        WebbedCave.setExit("Back", NarrowPassage);
-        WebbedCave.setExit("Forward", TreasureRoom);
+        WebbedCave.setExit("back", NarrowPassage);
+        WebbedCave.setExit("forward", TreasureRoom);
 
         TreasureRoom.setExit("Back", WebbedCave);
 
