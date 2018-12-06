@@ -4,6 +4,9 @@ import Main.GameObjects.Item;
 import Main.GameObjects.Player;
 import Main.UserInterface.Start;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game
 {
     private Parser parser;
@@ -102,18 +105,29 @@ public class Game
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.EXPLORE) {
-            //printExploration(getCurrentRoom().getExplore());
+            exploration(currentRoom);
         } else if (commandWord == CommandWord.SUICIDE) {
             Start.player.setDeath(true);
         }
         return wantToQuit;
     }
-    private void printExploration(String explorationresults){
-        if("".equals(explorationresults)){
-                System.out.println("I didn't find anything, there might be something in another room");
-        }   else {
-                System.out.println("I found something while exploring the current room");
-                //System.out.println(PLACEHOLDER FOR GETITEMINROOM + " (use 'Pickup' to collect the item)")
+
+    private void exploration(Room currentRoom) {
+        List<Item> itemsInRoom = new ArrayList<>();
+        Start.items.forEach(item -> {
+            if (item.getRoom().equals(currentRoom)) {
+                itemsInRoom.add(item);
+            }
+        });
+        if (itemsInRoom.size() == 0) {
+            System.out.println("There where no items in the room.");
+        } else {
+            StringBuilder sb = new StringBuilder();
+            itemsInRoom.forEach(item -> {
+                sb.append(item.getName());
+                Start.player.addItem(item);
+            });
+            System.out.println("Hey! I found {0}".replace("{0}", sb.toString()));
         }
     }
 
@@ -138,6 +152,7 @@ public class Game
             System.out.println("There is no entrance!");
         } else {
             currentRoom = nextRoom;
+            Start.player.setRoom(currentRoom);
             System.out.println(currentRoom.getLongDescription());
         }
     }
