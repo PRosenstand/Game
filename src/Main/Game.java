@@ -17,7 +17,7 @@ public class Game
     private void createRooms() {
 
 
-        DungeonEntrance = new Room("in the Dungeon Entrance the main entrance of the Dungeon");
+        DungeonEntrance = new Room("in the main entrance of the Dungeon");
         NarrowPassage = new Room("in a narrow passage leading from the entrance to multiple larger caves");
         Forest = new Room("in the dark forest in which the dungeon is found");
         DampCave = new Room("In a damp cave leading to a small river and what looks to be an abandoned camp");
