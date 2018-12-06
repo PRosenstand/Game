@@ -42,6 +42,14 @@ public class Player {
         Health = health;
     }
 
+    public boolean isDeath() {
+        return death;
+    }
+
+    public void setDeath(boolean death) {
+        this.death = death;
+    }
+
     /**
      * This also kills the player when health is 0 or below.
      *
