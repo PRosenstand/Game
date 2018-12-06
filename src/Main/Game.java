@@ -1,5 +1,7 @@
 package Main;
 
+import Main.GameObjects.Item;
+import Main.GameObjects.Player;
 import Main.UserInterface.Start;
 
 public class Game
@@ -10,7 +12,16 @@ public class Game
 
     public Game() {
         createRooms();
+        initialiseStuff();
         parser = new Parser();
+    }
+
+    private void initialiseStuff() {
+        Start.player = new Player(DungeonEntrance);
+        //TODO: Add description
+        Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "Zy Also this one"));
+        Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "Zy Also this one"));
+        Start.items.add(new Item(Forest, 3, "Key Piece 3", "Zy Also this one"));
     }
 
 
