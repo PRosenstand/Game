@@ -4,7 +4,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-
+    public Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
 
     public Game() {
         createRooms();
@@ -13,7 +13,7 @@ public class Game
 
 
     private void createRooms() {
-        Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
+
 
         DungeonEntrance = new Room("Dungeon Entrance the main entrance of the Dungeon");
         NarrowPassage = new Room("A narrow passage leading from the entrance to multiple larger caves");
@@ -88,7 +88,7 @@ public class Game
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
-        } else if (commandWord == commandWord.Explore){
+        } else if (commandWord == CommandWord.Explore) {
             //printExploration(getCurrentRoom().getExplore());
         } else if (commandWord == commandWord.Suicide){
             
