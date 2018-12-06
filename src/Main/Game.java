@@ -16,7 +16,7 @@ public class Game
         Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
 
         DungeonEntrance = new Room("Dungeon Entrance the main entrance of the Dungeon");
-        NarrowPassage = new Room("A narrow passage leading from the entrance to multible larger caves");
+        NarrowPassage = new Room("A narrow passage leading from the entrance to multiple larger caves");
         Forest = new Room("The dark forest in which the dungeon is found");
         DampCave = new Room("In a damp cave leading to a small river and what looks to be an abandoned camp");
         AbandonedCamp = new Room("What looks to be an abandoned camp from whom and why there's no clue");
@@ -88,8 +88,18 @@ public class Game
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        } else if (commandWord == commandWord.Explore){
+            //printExploration(getCurrentRoom().getExplore());
         }
         return wantToQuit;
+    }
+    private void printExploration(String explorationresults){
+        if("".equals(explorationresults)){
+                System.out.println("I didn't find anything, there might be something in another room");
+        }   else {
+                System.out.println("I found something while exploring the current room");
+                //System.out.println(PLACEHOLDER FOR GETITEMINROOM + " (use 'Pickup' to collect the item)")
+        }
     }
 
     private void printHelp() {

@@ -5,7 +5,8 @@ public enum CommandWord
     GO("go"),
     QUIT("quit"),
     HELP("help"),
-    UNKNOWN("?");
+    UNKNOWN("?"),
+    Explore("explore");
 
     private String commandString;
 
