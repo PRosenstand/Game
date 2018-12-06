@@ -73,7 +73,7 @@ public class Game
 
         while (!Start.player.isDeath()) {
             Command command = parser.getCommand();
-            finished = processCommand(command);
+            processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
         System.exit(0);
@@ -88,13 +88,12 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) {
+    private void processCommand(Command command) {
 
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
-            return false;
         }
 
         if (commandWord == CommandWord.HELP) {
@@ -108,7 +107,6 @@ public class Game
         } else if (commandWord == CommandWord.SUICIDE) {
             Start.player.setDeath(true);
         }
-        return false;
     }
 
     private void exploration(Room currentRoom) {
