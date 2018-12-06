@@ -1,5 +1,7 @@
 package Main;
 
+import Main.UserInterface.Start;
+
 public class Game
 {
     private Parser parser;
@@ -91,7 +93,7 @@ public class Game
         } else if (commandWord == CommandWord.EXPLORE) {
             //printExploration(getCurrentRoom().getExplore());
         } else if (commandWord == commandWord.SUICIDE){
-            
+            Main.UserInterface.Start.player.setDeath(true);
         }
         return wantToQuit;
     }
