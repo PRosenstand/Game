@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Game
 {
+    public boolean finished = false;
     private Parser parser;
     private Room currentRoom;
     public Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
@@ -70,13 +71,12 @@ public class Game
     public void play() {
         printWelcome();
 
-
-        boolean finished = false;
-        while (! finished) {
+        while (!Start.player.isDeath()) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
+        System.exit(0);
     }
 
     private void printWelcome() {
