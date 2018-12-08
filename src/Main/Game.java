@@ -23,9 +23,9 @@ public class Game
     private void initialiseStuff() {
         Start.player = new Player(currentRoom);
         //TODO: Add description
-        Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "Zy Also this one"));
-        Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "Zy Also this one"));
-        Start.items.add(new Item(Forest, 3, "Key Piece 3", "Zy Also this one"));
+        Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "This looks like a piece of some kind of key it might be worth holding on to"));
+        Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "This looks like a piece of some kind of key it might be worth holding on to"));
+        Start.items.add(new Item(Forest, 3, "Key Piece 3", "This looks like a piece of some kind of key it might be worth holding on to"));
     }
 
 
@@ -88,6 +88,7 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
+
     private void processCommand(Command command) {
 
         CommandWord commandWord = command.getCommandWord();
@@ -105,7 +106,8 @@ public class Game
         } else if (commandWord == CommandWord.EXPLORE) {
             exploration(currentRoom);
         } else if (commandWord == CommandWord.SUICIDE) {
-            Start.player.setDeath(true);
+            //Start.player.setDeath(true);
+            System.out.println(currentRoom);
         }
     }
 
