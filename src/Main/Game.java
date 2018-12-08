@@ -26,6 +26,7 @@ public class Game
         Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "This looks like a piece of some kind of key it might be worth holding on to"));
         Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "This looks like a piece of some kind of key it might be worth holding on to"));
         Start.items.add(new Item(Forest, 3, "Key Piece 3", "This looks like a piece of some kind of key it might be worth holding on to"));
+        Start.items.add(new Item(TreasureRoom, 4, "Debug victory item", "debug tool"));
     }
 
 
@@ -82,6 +83,8 @@ public class Game
     private boolean gameOver() {
         if (!Start.player.isDeath()) {
             return true;
+        } else if () {
+            return true;
         } else {
             return false;
         }
@@ -114,8 +117,7 @@ public class Game
         } else if (commandWord == CommandWord.EXPLORE) {
             exploration(currentRoom);
         } else if (commandWord == CommandWord.SUICIDE) {
-            //Start.player.setDeath(true);
-            System.out.println(currentRoom);
+            Start.player.setDeath(true);
         }
     }
 
