@@ -71,12 +71,20 @@ public class Game
     public void play() {
         printWelcome();
 
-        while (!Start.player.isDeath()) {
+        while (gameOver()) {
             Command command = parser.getCommand();
             processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
         System.exit(0);
+    }
+
+    private boolean gameOver() {
+        if (!Start.player.isDeath()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void printWelcome() {
