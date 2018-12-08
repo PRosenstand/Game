@@ -21,7 +21,7 @@ public class Game
     }
 
     private void initialiseStuff() {
-        Start.player = new Player(DungeonEntrance);
+        Start.player = new Player(currentRoom);
         //TODO: Add description
         Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "Zy Also this one"));
         Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "Zy Also this one"));
