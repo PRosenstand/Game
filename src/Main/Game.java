@@ -7,8 +7,7 @@ import Main.UserInterface.Start;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game
-{
+public class Game {
     public boolean finished = false;
     private Parser parser;
     private Room currentRoom;
@@ -26,7 +25,7 @@ public class Game
         Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "This looks like a piece of some kind of key it might be worth holding on to"));
         Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "This looks like a piece of some kind of key it might be worth holding on to"));
         Start.items.add(new Item(Forest, 3, "Key Piece 3", "This looks like a piece of some kind of key it might be worth holding on to"));
-        Start.items.add(new Item(TreasureRoom, 4, "Debug victory item", "debug tool"));
+        Start.items.add(new Item(TreasureRoom, 4, "VictoryTrophy", "debug tool"));
     }
 
 
@@ -81,9 +80,10 @@ public class Game
     }
 
     private boolean gameOver() {
+
         if (!Start.player.isDeath()) {
             return true;
-        } else if () {
+        } else if (Start.player.getInventory().equals("VictoryTrophy")) {
             return true;
         } else {
             return false;
@@ -104,7 +104,7 @@ public class Game
 
         CommandWord commandWord = command.getCommandWord();
 
-        if(commandWord == CommandWord.UNKNOWN) {
+        if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
         }
 
@@ -165,5 +165,4 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
 }
