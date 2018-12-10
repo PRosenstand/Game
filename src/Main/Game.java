@@ -80,14 +80,10 @@ public class Game {
     }
 
     private boolean gameOver() {
-
         if (!Start.player.isDeath()) {
             return true;
-        } else if (Start.player.getInventory().equals("VictoryTrophy")) {
-            return true;
-        } else {
-            return false;
-        }
+        } else
+            return Start.player.hasItem(Start.items.get(0)) && Start.player.hasItem(Start.items.get(1)) && Start.player.hasItem(Start.items.get(2));
     }
 
     private void printWelcome() {

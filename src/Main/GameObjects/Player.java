@@ -80,4 +80,14 @@ public class Player {
         }
         return addedItem.get();
     }
+
+    public boolean hasItem(Item item) {
+        AtomicBoolean containsItem = new AtomicBoolean(false);
+        getInventory().forEach((integer, item1) -> {
+            if (item.equals(item1)) {
+                containsItem.set(true);
+            }
+        });
+        return containsItem.get();
+    }
 }
