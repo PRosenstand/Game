@@ -62,7 +62,7 @@ public class Game {
         WebbedCave.setExit("back", NarrowPassage);
         WebbedCave.setExit("forward", TreasureRoom);
 
-        TreasureRoom.setExit("Back", WebbedCave);
+        TreasureRoom.setExit("back", WebbedCave);
 
 
         currentRoom = DungeonEntrance;
