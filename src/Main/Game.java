@@ -47,12 +47,14 @@ public class Game {
 
         NarrowPassage.setExit("back", DungeonEntrance);
         NarrowPassage.setExit("left", DampCave);
+        NarrowPassage.setExit("left", DampCave);
         NarrowPassage.setExit("right", WebbedCave);
 
         Forest.setExit("forward", DungeonEntrance);
 
         DampCave.setExit("back", NarrowPassage);
         DampCave.setExit("left", AbandonedCamp);
+        DampCave.setExit("right", UndergroundRiver);
 
         AbandonedCamp.setExit("back", DampCave);
 
