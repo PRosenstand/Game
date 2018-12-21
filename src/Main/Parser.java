@@ -1,5 +1,6 @@
 package Main;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Parser 
@@ -13,23 +14,13 @@ public class Parser
     }
 
     public Command getCommand() {
-        String inputLine;
-        String word1 = null;
-        String word2 = null;
-
+        String line = "";
         System.out.print("> ");
-
-        inputLine = reader.nextLine();
-
-        Scanner tokenizer = new Scanner(inputLine);
-        if(tokenizer.hasNext()) {
-            word1 = tokenizer.next().toLowerCase();
-            if(tokenizer.hasNext()) {
-                word2 = tokenizer.next().toLowerCase();
-            }
+        if (reader.hasNextLine()) {
+            line = reader.nextLine().toLowerCase();
         }
-
-        return new Command(commands.getCommandWord(word1), word2);
+        String[] args = line.split(" ");
+        return new Command(commands.getCommandWord(args[0]), Arrays.copyOfRange(args, 1, args.length));
     }
 
     public void showCommands() {

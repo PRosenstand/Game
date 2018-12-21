@@ -21,27 +21,27 @@ package Main;
 public class Command
 {
     private CommandWord commandWord;
-    private String secondWord;
+    private String[] args;
 
-    public Command(CommandWord commandWord, String secondWord) {
+    public Command(CommandWord commandWord, String[] args) {
         this.commandWord = commandWord;
-        this.secondWord = secondWord;
+        this.args = args;
     }
 
     public CommandWord getCommandWord() {
         return commandWord;
     }
 
-    public String getSecondWord() {
-        return secondWord;
+    public String[] getArgs() {
+        return args;
     }
 
     public boolean isUnknown() {
         return (commandWord == CommandWord.UNKNOWN);
     }
 
-    public boolean hasSecondWord() {
-        return (secondWord != null);
+    public boolean hasArgs() {
+        return (args.length != 0);
     }
 }
 

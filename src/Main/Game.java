@@ -4,8 +4,11 @@ import Main.GameObjects.Item;
 import Main.GameObjects.Player;
 import Main.UserInterface.Start;
 
-public class Game
-{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Game {
+    public boolean finished = false;
     private Parser parser;
     private Room currentRoom;
     public Room DungeonEntrance, NarrowPassage, Forest, DampCave, AbandonedCamp, UndergroundRiver, UndergroundLake, WebbedCave, TreasureRoom;
@@ -17,11 +20,12 @@ public class Game
     }
 
     private void initialiseStuff() {
-        Start.player = new Player(DungeonEntrance);
+        Start.player = new Player(currentRoom);
         //TODO: Add description
-        Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "Zy Also this one"));
-        Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "Zy Also this one"));
-        Start.items.add(new Item(Forest, 3, "Key Piece 3", "Zy Also this one"));
+        Start.items.add(new Item(UndergroundLake, 1, "Key Piece 1", "This looks like a piece of some kind of key it might be worth holding on to"));
+        Start.items.add(new Item(AbandonedCamp, 2, "Key Piece 2", "This looks like a piece of some kind of key it might be worth holding on to"));
+        Start.items.add(new Item(Forest, 3, "Key Piece 3", "This looks like a piece of some kind of key it might be worth holding on to"));
+        Start.items.add(new Item(TreasureRoom, 4, "VictoryTrophy", "debug tool"));
     }
 
 
@@ -49,6 +53,7 @@ public class Game
 
         DampCave.setExit("back", NarrowPassage);
         DampCave.setExit("left", AbandonedCamp);
+        DampCave.setExit("right", UndergroundRiver);
 
         AbandonedCamp.setExit("back", DampCave);
 
@@ -58,7 +63,7 @@ public class Game
         WebbedCave.setExit("back", NarrowPassage);
         WebbedCave.setExit("forward", TreasureRoom);
 
-        TreasureRoom.setExit("Back", WebbedCave);
+        TreasureRoom.setExit("back", WebbedCave);
 
 
         currentRoom = DungeonEntrance;
@@ -67,13 +72,19 @@ public class Game
     public void play() {
         printWelcome();
 
-
-        boolean finished = false;
-        while (! finished) {
+        while (gameOver()) {
             Command command = parser.getCommand();
-            finished = processCommand(command);
+            processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
+        System.exit(0);
+    }
+
+    private boolean gameOver() {
+        if (!Start.player.isDeath()) {
+            return true;
+        } else
+            return Start.player.hasItem(Start.items.get(0)) && Start.player.hasItem(Start.items.get(1)) && Start.player.hasItem(Start.items.get(2));
     }
 
     private void printWelcome() {
@@ -85,14 +96,13 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) {
-        boolean wantToQuit = false;
+
+    private void processCommand(Command command) {
 
         CommandWord commandWord = command.getCommandWord();
 
-        if(commandWord == CommandWord.UNKNOWN) {
+        if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
-            return false;
         }
 
         if (commandWord == CommandWord.HELP) {
@@ -100,20 +110,30 @@ public class Game
         } else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
+            Start.player.setDeath(true); //totally not the exact same thing a Suicide just a bit less dark
         } else if (commandWord == CommandWord.EXPLORE) {
-            //printExploration(getCurrentRoom().getExplore());
+            exploration(currentRoom);
         } else if (commandWord == CommandWord.SUICIDE) {
             Start.player.setDeath(true);
         }
-        return wantToQuit;
     }
-    private void printExploration(String explorationresults){
-        if("".equals(explorationresults)){
-                System.out.println("I didn't find anything, there might be something in another room");
-        }   else {
-                System.out.println("I found something while exploring the current room");
-                //System.out.println(PLACEHOLDER FOR GETITEMINROOM + " (use 'Pickup' to collect the item)")
+
+    private void exploration(Room currentRoom) {
+        List<Item> itemsInRoom = new ArrayList<>();
+        Start.items.forEach(item -> {
+            if (item.getRoom().equals(currentRoom)) {
+                itemsInRoom.add(item);
+            }
+        });
+        if (itemsInRoom.size() == 0) {
+            System.out.println("There where no items in the room.");
+        } else {
+            StringBuilder sb = new StringBuilder();
+            itemsInRoom.forEach(item -> {
+                sb.append(item.getName());
+                Start.player.addItem(item);
+            });
+            System.out.println("Hey! I found {0}".replace("{0}", sb.toString()));
         }
     }
 
@@ -125,12 +145,12 @@ public class Game
     }
 
     private void goRoom(Command command) {
-        if(!command.hasSecondWord()) {
+        if (!command.hasArgs()) {
             System.out.println("Go where?");
             return;
         }
 
-        String direction = command.getSecondWord();
+        String direction = command.getArgs()[0];
 
         Room nextRoom = currentRoom.getExit(direction);
 
@@ -138,16 +158,8 @@ public class Game
             System.out.println("There is no entrance!");
         } else {
             currentRoom = nextRoom;
+            Start.player.setRoom(currentRoom);
             System.out.println(currentRoom.getLongDescription());
-        }
-    }
-
-    private boolean quit(Command command) {
-        if(command.hasSecondWord()) {
-            System.out.println("Quit what?");
-            return false;
-        } else {
-            return true;
         }
     }
 }
